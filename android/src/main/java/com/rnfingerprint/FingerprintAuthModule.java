@@ -52,9 +52,9 @@ public class FingerprintAuthModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void isSupported(Callback reactErrorCallback, Callback reactSuccessCallback) {
     keyguardManager =
-            (KeyguardManager) getCurrentActivity().getSystemService(Context.KEYGUARD_SERVICE);
+            (KeyguardManager) getReactApplicationContext().getSystemService(Context.KEYGUARD_SERVICE);
     fingerprintManager =
-            (FingerprintManager) getCurrentActivity().getSystemService(Context.FINGERPRINT_SERVICE);
+            (FingerprintManager) getReactApplicationContext().getSystemService(Context.FINGERPRINT_SERVICE);
     if(!isFingerprintAuthAvailable()) {
       reactErrorCallback.invoke("Not supported.");
     } else {
