@@ -80,8 +80,8 @@ public class FingerprintDialog extends DialogFragment
          {
             public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event){
             if (keyCode == KeyEvent.KEYCODE_BACK) {
-              dialogCallback.onCancelled();
               dismiss();
+              mFingerprintHandler.endAuth();
               return true; // pretend we've processed it
             } else {
               return false; // pass on to be processed as normal
@@ -90,6 +90,13 @@ public class FingerprintDialog extends DialogFragment
         });
 
         return v;
+    }
+
+    @Override
+    public void onPause() {
+        dismiss();
+        mFingerprintHandler.endAuth();
+        super.onPause();
     }
 
     public void setCryptoObject(FingerprintManager.CryptoObject cryptoObject) {
