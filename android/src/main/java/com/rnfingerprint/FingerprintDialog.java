@@ -144,6 +144,8 @@ public class FingerprintDialog extends DialogFragment implements FingerprintHand
     @Override
     public void onPause() {
         super.onPause();
-        onCancelled();
+        if (isAuthInProgress) {
+            onCancelled();
+        }
     }
 }
