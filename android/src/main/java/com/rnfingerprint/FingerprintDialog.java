@@ -140,4 +140,10 @@ public class FingerprintDialog extends DialogFragment implements FingerprintHand
         dialogCallback.onCancelled();
         dismiss();
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        onCancelled();
+    }
 }
